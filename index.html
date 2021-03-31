@@ -5,25 +5,22 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="x-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Простой, удобный, а также мобильный справочник по программированию для начинающих">
     <meta name="keywords" content="devreader, android, html, js, css, sass, javascript, development, ui, design, corex">
     <meta name="author" content="DevReader Project">
     <meta name="generator" content="VSCode">
+    <meta name="msapplication-navbutton-color" content="#121212">
     <meta name="msapplication-TileColor" content="#202125">
     <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/devreader/devreader.github.io/master/res/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#202125">
-
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="DevReader">
     <meta name="apple-mobile-web-app-title" content="DevReader">
-    <meta name="theme-color" content="#121212">
-    <meta name="msapplication-navbutton-color" content="#121212">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-starturl" content="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <link rel="apple-touch-icon" sizes="57x57" href="https://raw.githubusercontent.com/devreader/devreader.github.io/master/res/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="https://raw.githubusercontent.com/devreader/devreader.github.io/master/res/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://raw.githubusercontent.com/devreader/devreader.github.io/master/res/favicon/apple-icon-72x72.png">
@@ -44,6 +41,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163812022-1"></script>
     <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-163812022-1");</script>
+    <script>"serviceWorker"in navigator&&navigator.serviceWorker.register("./service-worker.min.js").then(function(){console.log("Registered service worker!")});</script>
 
     <style>.blink{animation:blink-animation 1s steps(5,start) infinite;-webkit-animation:blink-animation 1s steps(5,start) infinite}@keyframes blink-animation{to{visibility:hidden}}@-webkit-keyframes blink-animation{to{visibility:hidden}}</style>
 
@@ -215,14 +213,6 @@
       </div>
       
     </div><!-- .container -->
-
-    <script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('assets/js/sw.js')
-    .then(reg => console.log('service worker registered'))
-    .catch(err => console.log('service worker not registered', err));
-}
-    </script>
 
   </body>
 
