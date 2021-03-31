@@ -5,10 +5,12 @@
  "lang": "ru-RU",
  "start_url": "/",
  "display": "standalone",
+ "orientation": "any",
  "theme_color": "#E6E6FA",
  "background_color": "#E6E6FA",
  "url": "https://devreader.github.io",
  "manifestUrl": "https://devreader.github.io/manifest.json",
+ 
  "icons": [
   {
    "src": "\/res/favicon/android-icon-36x36.png",
