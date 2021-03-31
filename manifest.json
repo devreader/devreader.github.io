@@ -6,8 +6,8 @@
  "start_url": "/",
  "display": "standalone",
  "orientation": "any",
- "theme_color": "#E6E6FA",
- "background_color": "#E6E6FA",
+ "theme_color": "#121212",
+ "background_color": "#121212",
  "url": "https://devreader.github.io",
  "manifestUrl": "https://devreader.github.io/manifest.json",
  
