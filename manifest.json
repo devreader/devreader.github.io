@@ -1,5 +1,14 @@
 {
  "name": "DevReader",
+ "short_name": "DevReader",
+ "description": "Простой, удобный, а также мобильный справочник по программированию для начинающих",
+ "lang": "ru-RU",
+ "start_url": "/",
+ "display": "standalone",
+ "theme_color": "#E6E6FA",
+ "background_color": "#E6E6FA",
+ "url": "https://devreader.github.io",
+ "manifestUrl": "https://devreader.github.io/manifest.json",
  "icons": [
   {
    "src": "\/res/favicon/android-icon-36x36.png",
@@ -39,8 +48,7 @@
   }
  ],
  "background_color": "#202125",
- "url": "https://devreader.github.io",
- "manifestUrl": "https://devreader.github.io/manifest.json",
+ 
  "lang": "",
  "screenshots": []
 }
