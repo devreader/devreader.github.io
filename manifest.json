@@ -37,5 +37,10 @@
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "background_color": "#202125",
+ "url": "https://devreader.github.io",
+ "manifestUrl": "https://devreader.github.io/manifest.json",
+ "lang": "",
+ "screenshots": []
 }

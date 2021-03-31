@@ -206,6 +206,14 @@
       
     </div><!-- .container -->
 
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('./assets/js/pwabuilder-sw.js');
+        }
+      )};
+    </script>
+
   </body>
 
 </html>
