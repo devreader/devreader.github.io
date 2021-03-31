@@ -1,11 +1,40 @@
-'use strict';
+const staticCacheName = 'site-static-v1';
 
-importScripts('sw-toolbox.js');
+const assets = [
+  '/',
+  '/index.html',
+  '/assets/js/highlight.pack.js',
+  '/assets/css/corex.css',
+  '/assets/css/fontello.css'
+];
 
-toolbox.precache(["/index.html","/assets/css/corex.css"]);
+// ? событие install
+self.addEventListener('install', evt => {
+  evt.waitUntil(
+    caches.open(staticCacheName).then((cache) => {
+      console.log('caching shell assets');
+      cache.addAll(assets);
+    })
+  );
+});
 
-toolbox.router.get('/images/*', toolbox.cacheFirst);
+// ? событие activate
+self.addEventListener('activate', evt => {
+  evt.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys
+        .filter(key => key !== staticCacheName)
+        .map(key => caches.delete(key))
+      );
+    })
+  );
+});
 
-toolbox.router.get('/*', toolbox.networkFirst, {
-  networkTimeoutSeconds: 5
+// ? событие fetch
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(cacheRes => {
+      return cacheRes || fetch(evt.request);
+    })
+  );
 });

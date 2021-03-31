@@ -3,7 +3,7 @@
   "short_name": "DevReader",
   "description": "Простой, удобный, а также мобильный справочник по программированию для начинающих",
   "lang": "ru-RU",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "orientation": "any",
   "theme_color": "#121212",
