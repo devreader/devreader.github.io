@@ -1,77 +1,38 @@
-//CACHING FILES//
-const filesToCache = [
+const staticCacheName = 'site-static-v1';
+const assets = [
   '/',
-  '/index.html',
   '/assets/css/corex.css',
+  '/index.html',
+  'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'
 ];
 
-const staticCacheName = 'pages-cache-v2';
-
-self.addEventListener('install', event => {
-  console.log('Attempting to install service worker and cache static assets');
-  event.waitUntil(
-    caches.open(staticCacheName)
-    .then(cache => {
-      return cache.addAll(filesToCache);
+// событие install
+self.addEventListener('install', evt => {
+  evt.waitUntil(
+    caches.open(staticCacheName).then((cache) => {
+      console.log('caching shell assets');
+      cache.addAll(assets);
     })
   );
 });
 
-//LOADING FILES WHEN OFFLINE//
-// self.addEventListener('fetch', event => {
-//   console.log('Fetch event for ', event.request.url);
-//   event.respondWith(
-//     caches.match(event.request)
-//     .then(response => {
-//       if (response) {
-//         console.log('Found ', event.request.url, ' in cache');
-//         return response;
-//       }
-//       console.log('Network request for ', event.request.url);
-//       return fetch(event.request)
-//
-//         .then(response => {
-//           // TODO 5 - Respond with custom 404 page
-//           return caches.open(staticCacheName).then(cache => {
-//             cache.put(event.request.url, response.clone());
-//             return response;
-//           });
-//         });
-//
-//
-//     }).catch(error => {
-//       console.log('Error, ', error);
-//       return caches.match('./offline.html');
-//     })
-//   );
-// });
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(async function () {
-    try {
-      return await fetch(event.request);
-    } catch (err) {
-      return caches.match(event.request);
-    }
-  }());
+// событие activate
+self.addEventListener('activate', evt => {
+  evt.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys
+        .filter(key => key !== staticCacheName)
+        .map(key => caches.delete(key))
+      );
+    })
+  );
 });
 
-// TODO 6 - Respond with custom offline page
-
-self.addEventListener('activate', event => {
-  console.log('Activating new service worker...');
-
-  const cacheWhitelist = [staticCacheName];
-
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
+// событие fetch
+self.addEventListener('fetch', evt => {
+  evt.respondWith(
+    caches.match(evt.request).then(cacheRes => {
+      return cacheRes || fetch(evt.request);
     })
   );
 });
